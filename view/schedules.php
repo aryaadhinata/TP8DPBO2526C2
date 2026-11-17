@@ -11,9 +11,15 @@
 <body>
   <?php require __DIR__ . "/navbar.php"; ?>
   <main class="container my-4">
-    <h1 class="mb-3">Schedules</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1>Schedules</h1>
+      <a class="btn btn-primary" href="schedules_create.php">Add Schedule</a>
+    </div>
     <?php if (($error ?? "") !== ""): ?>
       <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
+    <?php endif; ?>
+    <?php if (($notice ?? "") !== ""): ?>
+      <div class="alert alert-success"><?= htmlspecialchars($notice, ENT_QUOTES, "UTF-8") ?></div>
     <?php endif; ?>
     <div class="table-responsive">
       <table class="table">
@@ -24,6 +30,7 @@
             <th>DAY</th>
             <th>TIME</th>
             <th>ROOM</th>
+            <th>ACTIONS</th>
           </tr>
         </thead>
         <tbody>
@@ -38,10 +45,17 @@
                 <?= htmlspecialchars($row["end_time"], ENT_QUOTES, "UTF-8") ?>
               </td>
               <td><?= htmlspecialchars($row["room"], ENT_QUOTES, "UTF-8") ?></td>
+              <td class="text-nowrap">
+                <a class="btn btn-success" href="schedules_edit.php?id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
+                <form class="d-inline" method="post" action="schedules_delete.php">
+                  <input type="hidden" name="id" value="<?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?>">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
             </tr>
           <?php endforeach; ?>
           <?php if (empty($schedules)): ?>
-            <tr><td colspan="5" class="text-center">No schedules found.</td></tr>
+            <tr><td colspan="6" class="text-center">No schedules found.</td></tr>
           <?php endif; ?>
         </tbody>
       </table>

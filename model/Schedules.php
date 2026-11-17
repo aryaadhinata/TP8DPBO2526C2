@@ -1,6 +1,8 @@
 <?php
 class Schedules
 {
+    public const DAYS = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
     private mysqli $connection;
 
     public function __construct(mysqli $connection)
