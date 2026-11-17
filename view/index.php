@@ -1,3 +1,9 @@
+<?php
+if (!defined("MVC_REQUEST")) {
+    http_response_code(404);
+    exit;
+}
+?>
 <!doctype html>
 <html lang="en">
 

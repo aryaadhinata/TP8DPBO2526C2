@@ -33,4 +33,5 @@ if (isset($_POST["submit"])) {
     }
 }
 
+define("MVC_REQUEST", true);
 require __DIR__ . "/../view/create.php";

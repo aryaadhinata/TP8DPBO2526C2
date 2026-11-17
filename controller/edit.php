@@ -55,4 +55,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+define("MVC_REQUEST", true);
 require __DIR__ . "/../view/edit.php";
