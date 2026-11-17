@@ -10,7 +10,7 @@ if (!defined("MVC_REQUEST")) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="../bootstrap.min.css" rel="stylesheet">
+  <link href="../view/assets/css/bootstrap.min.css" rel="stylesheet">
   <title>Home</title>
 </head>
 
@@ -68,7 +68,7 @@ if (!defined("MVC_REQUEST")) {
       </tbody>
     </table>
   </div>
-  <script src="../bootstrap.bundle.min.js"></script>
+  <script src="../view/assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

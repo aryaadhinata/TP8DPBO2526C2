@@ -10,10 +10,10 @@ if (!defined("MVC_REQUEST")) {
 <head>
   <title>Create</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../bootstrap.min.css">
-  <script src="../jquery.min.js"></script>
-  <script src="../popper.min.js"></script>
-  <script src="../bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../view/assets/css/bootstrap.min.css">
+  <script src="../view/assets/js/jquery.min.js"></script>
+  <script src="../view/assets/js/popper.min.js"></script>
+  <script src="../view/assets/js/bootstrap.min.js"></script>
 </head>
 
 <body>
