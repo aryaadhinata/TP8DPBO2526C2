@@ -5,18 +5,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../view/assets/css/bootstrap.min.css" rel="stylesheet">
-  <title><?= htmlspecialchars($formTitle, ENT_QUOTES, "UTF-8") ?></title>
+  <title><?= htmlspecialchars($formTitle ?? "Course form", ENT_QUOTES, "UTF-8") ?></title>
 </head>
 
 <body>
+  <?php
+    $values = array_merge([
+      "code" => "",
+      "name" => "",
+      "credits" => "",
+      "lecturer_id" => "",
+    ], $values ?? []);
+    $lecturers = $lecturers ?? [];
+    $error = $error ?? "";
+    $formTitle = $formTitle ?? "Course form";
+    $formAction = $formAction ?? "read.php?entity=courses";
+  ?>
   <?php require __DIR__ . "/navbar.php"; ?>
   <main class="container my-4">
     <div class="col-lg-6 mx-auto">
-      <h1 class="mb-3"><?= htmlspecialchars($formTitle, ENT_QUOTES, "UTF-8") ?></h1>
+      <h1 class="mb-3"><?= htmlspecialchars($formTitle ?? "Course form", ENT_QUOTES, "UTF-8") ?></h1>
       <?php if (($error ?? "") !== ""): ?>
         <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
       <?php endif; ?>
-      <form method="post" action="<?= htmlspecialchars($formAction, ENT_QUOTES, "UTF-8") ?>">
+      <form method="post" action="<?= htmlspecialchars($formAction ?? "read.php?entity=courses", ENT_QUOTES, "UTF-8") ?>">
         <div class="mb-3">
           <label for="code" class="form-label">Course code</label>
           <input id="code" class="form-control" type="text" name="code" maxlength="10"

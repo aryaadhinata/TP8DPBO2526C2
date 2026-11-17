@@ -1,3 +1,25 @@
+<?php
+if (!isset($formTitle)) {
+  $formTitle = "Create Lecturer";
+}
+
+if (!isset($formAction)) {
+  $formAction = "";
+}
+
+if (!isset($error)) {
+  $error = "";
+}
+
+if (!isset($values)) {
+  $values = [
+    "name" => "",
+    "nidn" => "",
+    "phone" => "",
+    "join_date" => "",
+  ];
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -14,20 +36,6 @@
 <body>
   <?php require __DIR__ . "/navbar.php"; ?>
   <div class="col-lg-6 m-auto">
-    <?php
-      if (!isset($error)) {
-        $error = "";
-      }
-
-      if (!isset($values)) {
-        $values = [
-          "name" => "",
-          "nidn" => "",
-          "phone" => "",
-          "join_date" => "",
-        ];
-      }
-    ?>
     <form method="post" action="<?= htmlspecialchars($formAction, ENT_QUOTES, "UTF-8") ?>">
       <br><br>
       <div class="card">

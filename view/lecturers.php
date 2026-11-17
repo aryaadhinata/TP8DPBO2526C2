@@ -19,7 +19,7 @@
       <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
     <?php endif; ?>
     <?php if (($notice ?? "") !== ""): ?>
-      <div class="alert alert-success"><?= htmlspecialchars($notice, ENT_QUOTES, "UTF-8") ?></div>
+      <div class="alert alert-success"><?= htmlspecialchars($notice ?? "", ENT_QUOTES, "UTF-8") ?></div>
     <?php endif; ?>
     <div class="table-responsive">
       <table class="table">

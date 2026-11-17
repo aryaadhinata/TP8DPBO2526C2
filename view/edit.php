@@ -1,4 +1,8 @@
 <?php
+$formTitle = $formTitle ?? "";
+$formAction = $formAction ?? "";
+$error = $error ?? "";
+
 $lecturer = array_merge(
   ["id" => "", "name" => "", "nidn" => "", "phone" => "", "join_date" => ""],
   isset($lecturer) && is_array($lecturer) ? $lecturer : []
