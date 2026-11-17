@@ -1,9 +1,3 @@
-<?php
-if (!defined("MVC_REQUEST")) {
-    http_response_code(404);
-    exit;
-}
-?>
 <!doctype html>
 <html lang="en">
 
@@ -37,9 +31,6 @@ if (!defined("MVC_REQUEST")) {
     <div class="col-1 my-3">
       <a type="button" class="btn btn-primary nav-link active" href="create.php">Add New</a>
     </div>
-    <?php if ($error !== ""): ?>
-      <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
-    <?php endif; ?>
     <table class="table">
       <thead>
         <tr>
