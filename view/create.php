@@ -30,6 +30,20 @@
     </div>
   </nav>
   <div class="col-lg-6 m-auto">
+    <?php
+      if (!isset($error)) {
+        $error = "";
+      }
+
+      if (!isset($values)) {
+        $values = [
+          "name" => "",
+          "nidn" => "",
+          "phone" => "",
+          "join_date" => "",
+        ];
+      }
+    ?>
     <form method="post">
       <br><br>
       <div class="card">

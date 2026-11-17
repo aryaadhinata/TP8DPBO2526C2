@@ -43,6 +43,7 @@
         </tr>
       </thead>
       <tbody>
+        <?php $lecturers = $lecturers ?? []; ?>
         <?php foreach ($lecturers as $row): ?>
           <tr>
             <th><?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?></th>
