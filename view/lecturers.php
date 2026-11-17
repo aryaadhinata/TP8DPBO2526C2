@@ -13,10 +13,13 @@
   <main class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1>Lecturers</h1>
-      <a class="btn btn-primary" href="create.php">Add Lecturer</a>
+      <a class="btn btn-primary" href="create.php?entity=lecturers">Add Lecturer</a>
     </div>
     <?php if (($error ?? "") !== ""): ?>
       <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
+    <?php endif; ?>
+    <?php if (($notice ?? "") !== ""): ?>
+      <div class="alert alert-success"><?= htmlspecialchars($notice, ENT_QUOTES, "UTF-8") ?></div>
     <?php endif; ?>
     <div class="table-responsive">
       <table class="table">
@@ -39,8 +42,11 @@
               <td><?= htmlspecialchars($row["phone"], ENT_QUOTES, "UTF-8") ?></td>
               <td><?= htmlspecialchars($row["join_date"], ENT_QUOTES, "UTF-8") ?></td>
               <td>
-                <a class="btn btn-success" href="edit.php?id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
-                <a class="btn btn-danger" href="delete.php?id=<?= urlencode((string) $row["id"]) ?>">Delete</a>
+                <a class="btn btn-success" href="update.php?entity=lecturers&amp;id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
+                <form class="d-inline" method="post" action="delete.php?entity=lecturers">
+                  <input type="hidden" name="id" value="<?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?>">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
               </td>
             </tr>
           <?php endforeach; ?>

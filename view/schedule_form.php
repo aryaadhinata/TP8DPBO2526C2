@@ -57,7 +57,7 @@
             value="<?= htmlspecialchars($values["room"], ENT_QUOTES, "UTF-8") ?>" required>
         </div>
         <button class="btn btn-primary" type="submit">Save</button>
-        <a class="btn btn-secondary" href="schedules.php">Cancel</a>
+        <a class="btn btn-secondary" href="read.php?entity=schedules">Cancel</a>
       </form>
     </div>
   </main>

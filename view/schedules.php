@@ -13,7 +13,7 @@
   <main class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1>Schedules</h1>
-      <a class="btn btn-primary" href="schedules_create.php">Add Schedule</a>
+      <a class="btn btn-primary" href="create.php?entity=schedules">Add Schedule</a>
     </div>
     <?php if (($error ?? "") !== ""): ?>
       <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
@@ -46,8 +46,8 @@
               </td>
               <td><?= htmlspecialchars($row["room"], ENT_QUOTES, "UTF-8") ?></td>
               <td class="text-nowrap">
-                <a class="btn btn-success" href="schedules_edit.php?id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
-                <form class="d-inline" method="post" action="schedules_delete.php">
+                <a class="btn btn-success" href="update.php?entity=schedules&amp;id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
+                <form class="d-inline" method="post" action="delete.php?entity=schedules">
                   <input type="hidden" name="id" value="<?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?>">
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>

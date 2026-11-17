@@ -45,7 +45,7 @@
           </select>
         </div>
         <button class="btn btn-primary" type="submit">Save</button>
-        <a class="btn btn-secondary" href="courses.php">Cancel</a>
+        <a class="btn btn-secondary" href="read.php?entity=courses">Cancel</a>
       </form>
     </div>
   </main>

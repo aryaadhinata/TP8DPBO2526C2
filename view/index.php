@@ -16,21 +16,16 @@
     </div>
     <div class="row justify-content-center g-4">
       <div class="col-md-4">
-        <a class="btn btn-primary btn-lg w-100 py-4" href="lecturers.php">Lecturers</a>
+        <a class="btn btn-primary btn-lg w-100 py-4" href="read.php?entity=lecturers">Lecturers</a>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-success btn-lg w-100 py-4" href="courses.php">Courses</a>
+        <a class="btn btn-success btn-lg w-100 py-4" href="read.php?entity=courses">Courses</a>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-info btn-lg w-100 py-4" href="schedules.php">Schedules</a>
+        <a class="btn btn-info btn-lg w-100 py-4" href="read.php?entity=schedules">Schedules</a>
       </div>
     </div>
   </main>
   <script src="../view/assets/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
-  </div>
-  <script src="../view/assets/js/bootstrap.bundle.min.js"></script>
-</body>
-
 </html>

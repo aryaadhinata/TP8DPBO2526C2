@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="lecturers.php">Lecturers</a>
+          <a class="nav-link" href="read.php?entity=lecturers">Lecturers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="courses.php">Courses</a>
+          <a class="nav-link" href="read.php?entity=courses">Courses</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="schedules.php">Schedules</a>
+          <a class="nav-link" href="read.php?entity=schedules">Schedules</a>
         </li>
       </ul>
     </div>
