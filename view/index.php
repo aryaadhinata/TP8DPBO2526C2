@@ -2,13 +2,9 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap CSS -->
-  <link href="bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  <link href="../bootstrap.min.css" rel="stylesheet">
   <title>Home</title>
 </head>
 
@@ -35,6 +31,9 @@
     <div class="col-1 my-3">
       <a type="button" class="btn btn-primary nav-link active" href="create.php">Add New</a>
     </div>
+    <?php if ($error !== ""): ?>
+      <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
+    <?php endif; ?>
     <table class="table">
       <thead>
         <tr>
@@ -47,35 +46,23 @@
         </tr>
       </thead>
       <tbody>
-        <?php
-        include "connection.php";
-        $sql = "select * from lecturers";
-        $result = $conn->query($sql);
-        if (!$result) {
-          die("Invalid query!");
-        }
-        while ($row = $result->fetch_assoc()) {
-          echo "
-      <tr>
-        <th>$row[id]</th>
-        <td>$row[name]</td>
-        <td>$row[nidn]</td>
-        <td>$row[phone]</td>
-        <td>$row[join_date]</td>
-        <td>
-                  <a class='btn btn-success' href='edit.php?id=$row[id]'>Edit</a>
-                  <a class='btn btn-danger' href='delete.php?id=$row[id]'>Delete</a>
-                </td>
-      </tr>
-      ";
-        }
-        ?>
+        <?php foreach ($lecturers as $row): ?>
+          <tr>
+            <th><?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?></th>
+            <td><?= htmlspecialchars($row["name"], ENT_QUOTES, "UTF-8") ?></td>
+            <td><?= htmlspecialchars($row["nidn"], ENT_QUOTES, "UTF-8") ?></td>
+            <td><?= htmlspecialchars($row["phone"], ENT_QUOTES, "UTF-8") ?></td>
+            <td><?= htmlspecialchars($row["join_date"], ENT_QUOTES, "UTF-8") ?></td>
+            <td>
+              <a class="btn btn-success" href="edit.php?id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
+              <a class="btn btn-danger" href="delete.php?id=<?= urlencode((string) $row["id"]) ?>">Delete</a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="../bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
