@@ -166,8 +166,7 @@ $courses = $options["courses"];
 
 define("MVC_REQUEST", true);
 if ($entity === "lecturers") {
-    $lecturer = $values;
-    require __DIR__ . "/../view/edit.php";
+    require __DIR__ . "/../view/lecturer_form.php";
 } elseif ($entity === "courses") {
     require __DIR__ . "/../view/course_form.php";
 } else {
