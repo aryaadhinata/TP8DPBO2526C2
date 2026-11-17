@@ -9,56 +9,26 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.php">Lecturers</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">?</a>
-          </li>
-        </ul>
+  <main class="container py-5">
+    <div class="text-center mb-5">
+      <h1>Academic Management</h1>
+      <p class="text-muted">Choose a section to continue.</p>
+    </div>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4">
+        <a class="btn btn-primary btn-lg w-100 py-4" href="lecturers.php">Lecturers</a>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-success btn-lg w-100 py-4" href="courses.php">Courses</a>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-info btn-lg w-100 py-4" href="schedules.php">Schedules</a>
       </div>
     </div>
-  </nav>
-  <div class="container my-4">
-    <div class="col-1 my-3">
-      <a type="button" class="btn btn-primary nav-link active" href="create.php">Add New</a>
-    </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>NAME</th>
-          <th>NIDN</th>
-          <th>PHONE</th>
-          <th>JOIN DATE</th>
-          <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $lecturers = $lecturers ?? []; ?>
-        <?php foreach ($lecturers as $row): ?>
-          <tr>
-            <th><?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?></th>
-            <td><?= htmlspecialchars($row["name"], ENT_QUOTES, "UTF-8") ?></td>
-            <td><?= htmlspecialchars($row["nidn"], ENT_QUOTES, "UTF-8") ?></td>
-            <td><?= htmlspecialchars($row["phone"], ENT_QUOTES, "UTF-8") ?></td>
-            <td><?= htmlspecialchars($row["join_date"], ENT_QUOTES, "UTF-8") ?></td>
-            <td>
-              <a class="btn btn-success" href="edit.php?id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
-              <a class="btn btn-danger" href="delete.php?id=<?= urlencode((string) $row["id"]) ?>">Delete</a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+  </main>
+  <script src="../view/assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
   </div>
   <script src="../view/assets/js/bootstrap.bundle.min.js"></script>
 </body>

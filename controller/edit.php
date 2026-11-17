@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $lecturer["phone"],
                 $lecturer["join_date"]
             );
-            header("Location: index.php");
+            header("Location: lecturers.php");
             exit;
         } catch (Throwable $exception) {
             $error = "Unable to update lecturer.";
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
     if (!$id) {
-        header("Location: index.php");
+        header("Location: lecturers.php");
         exit;
     }
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if ($lecturer === null) {
-        header("Location: index.php");
+        header("Location: lecturers.php");
         exit;
     }
 }

@@ -25,7 +25,7 @@ if (isset($_POST["submit"])) {
                 $values["phone"],
                 $values["join_date"]
             );
-            header("Location: index.php");
+            header("Location: lecturers.php");
             exit;
         } catch (Throwable $exception) {
             $error = "Unable to create lecturer.";

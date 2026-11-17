@@ -17,24 +17,7 @@ $lecturer = array_merge(
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.php">Lecturers</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">?</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php require __DIR__ . "/navbar.php"; ?>
   <div class="col-lg-6 m-auto">
     <form method="post">
       <br><br>
@@ -55,7 +38,7 @@ $lecturer = array_merge(
         <label>JOIN DATE:</label>
         <input type="date" name="join_date" value="<?= htmlspecialchars($lecturer["join_date"], ENT_QUOTES, "UTF-8") ?>" class="form-control" required><br>
         <button class="btn btn-success" type="submit" name="submit">Submit</button><br>
-        <a class="btn btn-info" href="index.php">Cancel</a><br>
+        <a class="btn btn-info" href="lecturers.php">Cancel</a><br>
       </div>
     </form>
   </div>

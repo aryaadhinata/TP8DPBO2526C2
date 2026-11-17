@@ -7,5 +7,5 @@ if ($id) {
     (new Lecturer($conn))->delete($id);
 }
 
-header("Location: index.php");
+header("Location: lecturers.php");
 exit;
