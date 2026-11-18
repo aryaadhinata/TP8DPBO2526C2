@@ -94,8 +94,6 @@ Perubahan dosen pengampu juga diperiksa agar jadwal mata kuliah tersebut tidak b
 │   │   ├── index.php
 │   │   ├── read.php
 │   │   └── update.php
-│   ├── database/
-│   │   └── tp_mvc26.sql
 │   ├── model/
 │   │   ├── connection.php
 │   │   ├── Courses.php
@@ -103,6 +101,13 @@ Perubahan dosen pengampu juga diperiksa agar jadwal mata kuliah tersebut tidak b
 │   │   └── Schedules.php
 │   └── view/
 │       ├── assets/
+│       │   ├── css/
+│       │   │   └── bootstrap.min.css
+│       │   └── js/
+│       │       ├── bootstrap.bundle.min.js
+│       │       ├── bootstrap.min.js
+│       │       ├── jquery.min.js
+│       │       └── popper.min.js
 │       ├── course_form.php
 │       ├── courses.php
 │       ├── index.php
@@ -111,5 +116,6 @@ Perubahan dosen pengampu juga diperiksa agar jadwal mata kuliah tersebut tidak b
 │       ├── navbar.php
 │       ├── schedule_form.php
 │       └── schedules.php
-└── ReadME.md
+├── ReadME.md
+└── tp_mvc26.sql
 ```
