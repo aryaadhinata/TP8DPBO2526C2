@@ -27,6 +27,7 @@ $notice = is_string($noticeCode) ? ($notices[$noticeCode] ?? "") : "";
 $lecturers = [];
 $courses = [];
 $schedules = [];
+$view = $entity . ".php";
 
 try {
     switch ($entity) {

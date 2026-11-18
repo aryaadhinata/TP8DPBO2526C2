@@ -12,9 +12,9 @@ class Courses
     {
         $result = $this->connection->query(
             "SELECT c.id, c.code, c.name, c.credits, c.lecturer_id, l.name AS lecturer_name
-             FROM courses c
-             LEFT JOIN lecturers l ON l.id = c.lecturer_id
-             ORDER BY c.code"
+            FROM courses c
+            LEFT JOIN lecturers l ON l.id = c.lecturer_id
+            ORDER BY c.code"
         );
         return $result->fetch_all(MYSQLI_ASSOC);
     }

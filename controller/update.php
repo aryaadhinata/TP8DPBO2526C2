@@ -24,22 +24,19 @@ if (
 
 $options = ["lecturers" => [], "courses" => []];
 $error = "";
+$values = null;
 try {
-    switch ($entity) {
-        case "lecturers":
-            $model = new Lecturer($conn);
-            $values = $model->findById($id);
-            break;
-        case "courses":
-            $model = new Courses($conn);
-            $values = $model->findById($id);
-            $options["lecturers"] = (new Lecturer($conn))->all();
-            break;
-        case "schedules":
-            $model = new Schedules($conn);
-            $values = $model->findById($id);
-            $options["courses"] = (new Courses($conn))->all();
-            break;
+    $model = match ($entity) {
+        "lecturers" => new Lecturer($conn),
+        "courses" => new Courses($conn),
+        "schedules" => new Schedules($conn),
+    };
+    $values = $model->findById($id);
+
+    if ($entity === "courses") {
+        $options["lecturers"] = (new Lecturer($conn))->all();
+    } elseif ($entity === "schedules") {
+        $options["courses"] = (new Courses($conn))->all();
     }
 } catch (Throwable $exception) {
     header("Location: read.php?entity=" . rawurlencode($entity) . "&error=load");
@@ -92,9 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ["options" => ["min_range" => 1, "max_range" => 255]]
         );
         $lecturerId = null;
+        $lecturerIds = array_map("intval", array_column($options["lecturers"], "id"));
         if ($values["lecturer_id"] !== "") {
             $lecturerId = filter_var($values["lecturer_id"], FILTER_VALIDATE_INT);
-            $lecturerIds = array_map("intval", array_column($options["lecturers"], "id"));
         }
 
         if ($values["code"] === "" || $values["name"] === "" || $credits === false) {

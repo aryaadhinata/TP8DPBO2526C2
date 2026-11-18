@@ -15,9 +15,9 @@ class Schedules
         $result = $this->connection->query(
             "SELECT s.id, s.course_id, c.code AS course_code, c.name AS course_name,
                     s.day_of_week, s.start_time, s.end_time, s.room
-             FROM schedules s
-             INNER JOIN courses c ON c.id = s.course_id
-             ORDER BY s.day_of_week, s.start_time, c.code"
+            FROM schedules s
+            INNER JOIN courses c ON c.id = s.course_id
+            ORDER BY s.day_of_week, s.start_time, c.code"
         );
         return $result->fetch_all(MYSQLI_ASSOC);
     }
@@ -26,8 +26,8 @@ class Schedules
     {
         $statement = $this->connection->prepare(
             "SELECT id, course_id, day_of_week, start_time, end_time, room
-             FROM schedules
-             WHERE id = ?"
+            FROM schedules
+            WHERE id = ?"
         );
         $statement->bind_param("i", $id);
         $statement->execute();
@@ -58,7 +58,7 @@ class Schedules
     ): void {
         $statement = $this->connection->prepare(
             "INSERT INTO schedules (course_id, day_of_week, start_time, end_time, room)
-             VALUES (?, ?, ?, ?, ?)"
+            VALUES (?, ?, ?, ?, ?)"
         );
         $statement->bind_param("issss", $courseId, $dayOfWeek, $startTime, $endTime, $room);
         $statement->execute();
@@ -75,8 +75,8 @@ class Schedules
     ): void {
         $statement = $this->connection->prepare(
             "UPDATE schedules
-             SET course_id = ?, day_of_week = ?, start_time = ?, end_time = ?, room = ?
-             WHERE id = ?"
+            SET course_id = ?, day_of_week = ?, start_time = ?, end_time = ?, room = ?
+            WHERE id = ?"
         );
         $statement->bind_param(
             "issssi",

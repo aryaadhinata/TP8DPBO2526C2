@@ -73,9 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ["options" => ["min_range" => 1, "max_range" => 255]]
         );
         $lecturerId = null;
+        $lecturerIds = array_map("intval", array_column($options["lecturers"], "id"));
         if ($values["lecturer_id"] !== "") {
             $lecturerId = filter_var($values["lecturer_id"], FILTER_VALIDATE_INT);
-            $lecturerIds = array_map("intval", array_column($options["lecturers"], "id"));
         }
 
         if ($values["code"] === "" || $values["name"] === "" || $credits === false) {

@@ -4,11 +4,11 @@ if (!defined("MVC_REQUEST")) {
     exit;
 }
 
-$formTitle = is_string($formTitle ?? null) ? $formTitle : "Lecturer";
-$formAction = is_string($formAction ?? null) ? $formAction : "create.php?entity=lecturers";
-$error = is_string($error ?? null) ? $error : "";
+$formTitle = isset($formTitle) && is_string($formTitle) ? $formTitle : "Lecturer";
+$formAction = isset($formAction) && is_string($formAction) ? $formAction : "create.php?entity=lecturers";
+$error = isset($error) && is_string($error) ? $error : "";
 $defaults = ["name" => "", "nidn" => "", "phone" => "", "join_date" => ""];
-$values = array_merge($defaults, is_array($values ?? null) ? $values : []);
+$values = array_merge($defaults, isset($values) && is_array($values) ? $values : []);
 foreach ($defaults as $field => $default) {
     $values[$field] = is_scalar($values[$field]) ? (string) $values[$field] : $default;
 }

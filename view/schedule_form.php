@@ -17,7 +17,7 @@
     <div class="col-lg-6 mx-auto">
       <h1 class="mb-3"><?= htmlspecialchars($formTitle, ENT_QUOTES, "UTF-8") ?></h1>
       <?php if (($error ?? "") !== ""): ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, "UTF-8") ?></div>
+        <div class="alert alert-danger"><?= htmlspecialchars($error ?? "", ENT_QUOTES, "UTF-8") ?></div>
       <?php endif; ?>
       <form method="post" action="<?= htmlspecialchars($formAction, ENT_QUOTES, "UTF-8") ?>">
         <div class="mb-3">
