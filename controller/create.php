@@ -144,13 +144,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Attempt to create a new schedule record if no errors
         if ($error === "") {
             try {
-                (new Schedules($conn))->create(
+                $scheduleModel = new Schedules($conn);
+                $conflict = $scheduleModel->findConflict(
                     $courseId,
                     $values["day_of_week"],
                     $values["start_time"],
                     $values["end_time"],
                     $values["room"]
                 );
+                if ($conflict !== null) {
+                    $error = $conflict;
+                } else {
+                    $scheduleModel->create(
+                        $courseId,
+                        $values["day_of_week"],
+                        $values["start_time"],
+                        $values["end_time"],
+                        $values["room"]
+                    );
+                }
             } catch (Throwable $exception) {
                 $error = "Unable to save schedule. It may duplicate an existing schedule.";
             }

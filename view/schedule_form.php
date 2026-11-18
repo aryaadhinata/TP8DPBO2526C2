@@ -27,7 +27,11 @@
             <?php foreach ($courses ?? [] as $course): ?>
               <option value="<?= htmlspecialchars((string) $course["id"], ENT_QUOTES, "UTF-8") ?>"
                 <?= (string) ($values["course_id"] ?? "") === (string) $course["id"] ? "selected" : "" ?>>
-                <?= htmlspecialchars($course["code"] . " - " . $course["name"], ENT_QUOTES, "UTF-8") ?>
+                <?= htmlspecialchars(
+                  $course["code"] . " - " . $course["name"] . " (" . ($course["lecturer_name"] ?? "Unassigned") . ")",
+                  ENT_QUOTES,
+                  "UTF-8"
+                ) ?>
               </option>
             <?php endforeach; ?>
           </select>

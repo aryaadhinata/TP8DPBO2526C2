@@ -68,6 +68,7 @@ if ($entity === "schedules" && $options["courses"] === []) {
 
 // Handle the case where there are no lecturers available for courses
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $originalLecturerId = $values["lecturer_id"] ?? null;
     $fields = [
         "lecturers" => ["name", "nidn", "phone", "join_date"],
         "courses" => ["code", "name", "credits", "lecturer_id"],
@@ -121,7 +122,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error = "Select a valid lecturer or leave the course unassigned.";
         } else {
             try {
-                $model->update($id, $values["code"], $values["name"], $credits, $lecturerId);
+                $lecturerChanged = $lecturerId !== null
+                    && (int) $lecturerId !== (int) ($originalLecturerId ?? 0);
+                $clash = $lecturerChanged
+                    ? (new Schedules($conn))->lecturerClash($id, $lecturerId)
+                    : null;
+                if ($clash !== null) {
+                    $error = $clash;
+                } else {
+                    $model->update($id, $values["code"], $values["name"], $credits, $lecturerId);
+                }
             } catch (Throwable $exception) {
                 $error = "Unable to save course. Check that the course code is unique.";
             }
@@ -152,14 +162,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // If there are no validation errors, attempt to update the schedule record
         if ($error === "") {
             try {
-                $model->update(
-                    $id,
+                $conflict = $model->findConflict(
                     $courseId,
                     $values["day_of_week"],
                     $values["start_time"],
                     $values["end_time"],
-                    $values["room"]
+                    $values["room"],
+                    $id
                 );
+                if ($conflict !== null) {
+                    $error = $conflict;
+                } else {
+                    $model->update(
+                        $id,
+                        $courseId,
+                        $values["day_of_week"],
+                        $values["start_time"],
+                        $values["end_time"],
+                        $values["room"]
+                    );
+                }
             } catch (Throwable $exception) {
                 $error = "Unable to save schedule. It may duplicate an existing schedule.";
             }

@@ -27,6 +27,7 @@
           <tr>
             <th>COURSE CODE</th>
             <th>COURSE</th>
+            <th>LECTURER</th>
             <th>DAY</th>
             <th>TIME</th>
             <th>ROOM</th>
@@ -38,11 +39,12 @@
             <tr>
               <td><?= htmlspecialchars($row["course_code"], ENT_QUOTES, "UTF-8") ?></td>
               <td><?= htmlspecialchars($row["course_name"], ENT_QUOTES, "UTF-8") ?></td>
+              <td><?= htmlspecialchars($row["lecturer_name"] ?? "Unassigned", ENT_QUOTES, "UTF-8") ?></td>
               <td><?= htmlspecialchars($row["day_of_week"], ENT_QUOTES, "UTF-8") ?></td>
               <td>
-                <?= htmlspecialchars($row["start_time"], ENT_QUOTES, "UTF-8") ?>
+                <?= htmlspecialchars(substr($row["start_time"], 0, 5), ENT_QUOTES, "UTF-8") ?>
                 -
-                <?= htmlspecialchars($row["end_time"], ENT_QUOTES, "UTF-8") ?>
+                <?= htmlspecialchars(substr($row["end_time"], 0, 5), ENT_QUOTES, "UTF-8") ?>
               </td>
               <td><?= htmlspecialchars($row["room"], ENT_QUOTES, "UTF-8") ?></td>
               <td class="text-nowrap">
@@ -55,7 +57,7 @@
             </tr>
           <?php endforeach; ?>
           <?php if (empty($schedules)): ?>
-            <tr><td colspan="6" class="text-center">No schedules found.</td></tr>
+            <tr><td colspan="7" class="text-center">No schedules found.</td></tr>
           <?php endif; ?>
         </tbody>
       </table>

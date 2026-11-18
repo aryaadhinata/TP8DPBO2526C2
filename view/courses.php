@@ -29,20 +29,29 @@
             <th>COURSE</th>
             <th>CREDITS</th>
             <th>LECTURER</th>
+            <th>SCHEDULES</th>
             <th>ACTIONS</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($courses ?? [] as $row): ?>
+            <?php
+            $scheduleCount = (int) ($row["schedule_count"] ?? 0);
+            $deleteMessage = $scheduleCount > 0
+                ? "Deleting this course will also delete its {$scheduleCount} schedule(s). Continue?"
+                : "Delete this course?";
+            ?>
             <tr>
               <td><?= htmlspecialchars($row["code"], ENT_QUOTES, "UTF-8") ?></td>
               <td><?= htmlspecialchars($row["name"], ENT_QUOTES, "UTF-8") ?></td>
               <td><?= htmlspecialchars((string) $row["credits"], ENT_QUOTES, "UTF-8") ?></td>
               <td><?= htmlspecialchars($row["lecturer_name"] ?? "Unassigned", ENT_QUOTES, "UTF-8") ?></td>
+              <td><?= $scheduleCount ?></td>
               <td class="text-nowrap">
                 <a class="btn btn-success" href="update.php?entity=courses&amp;id=<?= urlencode((string) $row["id"]) ?>">Edit</a>
                 <form class="d-inline" method="post" action="delete.php?entity=courses"
-                  onsubmit="return confirm('Deleting this course will also delete its schedules. Continue?')">
+                  data-message="<?= htmlspecialchars($deleteMessage, ENT_QUOTES, "UTF-8") ?>"
+                  onsubmit="return confirm(this.dataset.message)">
                   <input type="hidden" name="id" value="<?= htmlspecialchars((string) $row["id"], ENT_QUOTES, "UTF-8") ?>">
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
@@ -50,7 +59,7 @@
             </tr>
           <?php endforeach; ?>
           <?php if (empty($courses)): ?>
-            <tr><td colspan="5" class="text-center">No courses found.</td></tr>
+            <tr><td colspan="6" class="text-center">No courses found.</td></tr>
           <?php endif; ?>
         </tbody>
       </table>
