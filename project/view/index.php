@@ -16,13 +16,13 @@
     </div>
     <div class="row justify-content-center g-4">
       <div class="col-md-4">
-        <a class="btn btn-primary btn-lg w-100 py-4" href="read.php?entity=lecturers">Lecturers</a>
+        <a class="btn btn-primary btn-lg w-100 py-4" href="../controller/read.php?entity=lecturers">Lecturers</a>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-success btn-lg w-100 py-4" href="read.php?entity=courses">Courses</a>
+        <a class="btn btn-success btn-lg w-100 py-4" href="../controller/read.php?entity=courses">Courses</a>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-info btn-lg w-100 py-4" href="read.php?entity=schedules">Schedules</a>
+        <a class="btn btn-info btn-lg w-100 py-4" href="../controller/read.php?entity=schedules">Schedules</a>
       </div>
     </div>
   </main>
