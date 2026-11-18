@@ -1,15 +1,15 @@
 -- Database untuk repo TP8DPBO2526C2 (aplikasi CRUD Lecturers, PHP MVC + mysqli)
--- Nama database mengikuti model/connection.php: tp_mvc25
+-- Nama database mengikuti model/connection.php: tp_mvc26
 --
 -- Relasi:
 --   lecturers (1) ----< courses (1) ----< schedules
 --   Satu dosen mengampu banyak mata kuliah, satu mata kuliah punya banyak jadwal.
 
-CREATE DATABASE IF NOT EXISTS tp_mvc25
+CREATE DATABASE IF NOT EXISTS tp_mvc26
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE tp_mvc25;
+USE tp_mvc26;
 
 -- ---------------------------------------------------------------
 -- Tabel dosen (kolom mengikuti query di model/Lecturer.php)
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS schedules (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------
--- Data contoh (opsional, boleh dihapus). Import ulang tidak menggandakan data.
+-- Data dummy. Import ulang tidak menggandakan data.
 -- Relasi diisi lewat subquery NIDN / kode mata kuliah, jadi tidak
 -- bergantung pada nomor id yang dihasilkan auto increment.
 -- ---------------------------------------------------------------
