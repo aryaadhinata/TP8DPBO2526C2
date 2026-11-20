@@ -12,7 +12,9 @@ Aplikasi web sederhana untuk mengelola data dosen, mata kuliah, dan jadwal kulia
 
 Dokumentasi penggunaan aplikasi tersedia dalam bentuk rekaman layar:
 
-[▶ Tonton rekaman layar TP8DPBO2526C2](Documentation/TP8DPBO2526C2.mp4)
+[▶ Tonton rekaman layar TP8DPBO2526C2]
+<video src="Documentation/TP8DPBO2526C2.mp4" controls="controls" style="max-width: 100%;">
+</video>
 
 ## Fitur
 
